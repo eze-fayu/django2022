@@ -14,5 +14,5 @@ def contacto(request):
         
     else:
         contacto_form = ContactoForm()
-    return render(request, "contacto/contacto.html", {'contacto_form': contacto_form})
+    return render(request, "main/contacto.html", {'contacto_form': contacto_form})
 

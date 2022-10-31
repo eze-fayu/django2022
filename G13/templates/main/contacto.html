@@ -1,13 +1,24 @@
 {% extends "base.html" %}
 
 {% block cuerpo %}
-<div class="form-group container">
-    <form action="{% url 'contacto' %}" method="post">
-        <table>
-            {% csrf_token %}
-            {{ contacto_form.as_table }} 
-        </table>
-        <input type="submit" class="btn btn-primary" value="Contactar">
-    </form>    
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3 mt-5 mb-5">
+
+        <h1 class="text-center">Contacto</h1>
+        <hr>
+
+        <div class="card">
+            <div class="card-body">
+                <form action="{% url 'contacto' %}" method="post">
+                    <table>
+                        {% csrf_token %}
+                        {{ contacto_form.as_table }} 
+                    </table>
+                    <input type="submit" class="btn btn-primary" value="Contactar">
+                </form>
+            </div>
+        </div>
+    </div>
+        
 </div>
 {% endblock cuerpo %}

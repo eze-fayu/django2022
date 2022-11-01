@@ -29,7 +29,7 @@ def contacto(request):
             })
 
             email = EmailMessage(
-                "Mensaje deSde la web", 
+                "Mensaje desde la web", 
                 template, 
                 settings.EMAIL_HOST_USER,
                 ['xxxxx@gmail.com'], # correo desde donde se envia

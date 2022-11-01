@@ -1,2 +1,3 @@
 django/
 *.pyc
+G13/G13/__pycache__/

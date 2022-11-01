@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from .forms import ContactoForm
-# from django.core.mail import EmailMessage
-# from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from django.contrib import messages
+from django.conf import settings
 
 # Create your views here.
 
@@ -18,7 +20,28 @@ def contacto(request):
             apellido = contacto_form.cleaned_data['apellido']
             email = contacto_form.cleaned_data['email']
             mensaje = contacto_form.cleaned_data['mensaje']
-        
+
+            template = render_to_string('main/email_template.html', {
+                'nombre': nombre,
+                'apellido': apellido,
+                'email': email,
+                'mensaje': mensaje
+            })
+
+            email = EmailMessage(
+                "Mensaje deSde la web", 
+                template, 
+                settings.EMAIL_HOST_USER,
+                ['xxxxx@gmail.com'], # correo desde donde se envia
+                reply_to=[email]
+            )
+
+            email.fail_silently = False
+            email.send()
+
+            messages.success(request, "Mensaje enviado correctamente")
+
+            return redirect('contacto')
     else:
         contacto_form = ContactoForm()
     return render(request, "main/contacto.html", {'contacto_form': contacto_form})

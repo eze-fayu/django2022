@@ -20,10 +20,10 @@
           <a class="nav-link active text-dark mr-3" aria-current="page" href="/">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark mr-3" href="#">Gestor de Libros</a>
+          <a class="nav-link text-dark mr-3" href="/catalogo">Gestor de Libros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark mr-3" href="contacto">Contacto</a>
+          <a class="nav-link text-dark mr-3" href="/contacto">Contacto</a>
         </li>
       </ul>
       </nav>
@@ -41,6 +41,7 @@
 
     <footer>
       <p class='text-primary'>Desarrollado por el Grupo 13 Codo a Codo 2022. Todos los derechos Reservados</p>
+      {% comment %}  {% include "footer.html" %}  PODRIA USAR ESTO PARA TENER EL FOOTER SEPARADO {% endcomment %}
       {% block pie_pagina %}
       {% endblock pie_pagina %}
     </footer>

@@ -1,5 +1,5 @@
 from django import forms
-from .models import autores, libros, ejemplares, usuarios, prestamos, devoluciones, reservas, multas, pagos
+from .models import autores, libros, ejemplares, usuarios, prestamos, devoluciones, reservas
 
 
 class Autores_Form(forms.ModelForm):
@@ -23,27 +23,18 @@ class Usuarios_Form(forms.ModelForm):
         model = usuarios
         fields = '__all__'
 
-class prestamos_form(forms.ModelForm):
+class Prestamos_Form(forms.ModelForm):
     class Meta:
         model = prestamos
         fields = '__all__'
 
-class devoluciones_form(forms.ModelForm):
+class Devoluciones_Form(forms.ModelForm):
     class Meta:
         model = devoluciones
         fields = '__all__'
 
-class reservas_form(forms.ModelForm):
+class Reservas_Form(forms.ModelForm):
     class Meta:
         model = reservas
         fields = '__all__'
 
-class multas_form(forms.ModelForm):
-    class Meta:
-        model = multas
-        fields = '__all__'
-
-class pagos_form(forms.ModelForm):
-    class Meta:
-        model = pagos
-        fields = '__all__'

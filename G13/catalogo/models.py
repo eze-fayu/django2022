@@ -52,16 +52,3 @@ class reservas(models.Model):
     def __str__(self):
         return self.fecha_reserva
 
-class multas(models.Model):
-    usuario = models.ForeignKey(usuarios, on_delete=models.CASCADE)
-    fecha_multa = models.DateField()
-    monto = models.CharField(max_length=50)
-    def __str__(self):
-        return self.fecha_multa
-
-class pagos(models.Model):
-    multa = models.ForeignKey(multas, on_delete=models.CASCADE)
-    fecha_pago = models.DateField()
-    monto = models.CharField(max_length=50, verbose_name="Monto")
-    def __str__(self):
-        return self.fecha_pago

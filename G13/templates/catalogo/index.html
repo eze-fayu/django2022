@@ -1,38 +1,21 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block cuerpo %}
 
-<div class="row">
-    <div class="col-12 col-md-6 offset-md-3 mt-5 mb-5">
+<h1 class="container text-center" style="margin-top:100px">Seleccione el tipo de acción que desea:</h1>
 
-        <h1 class="text-center" style="margin-top:50px">GESTOR DE LIBROS</h1>
-        <hr>
+    <div class="btn-group" role="group">
+        <a class="btn btn-primary m-1" href="{% url 'alta_usuario' %}">Creacion de un usuario</a>
+        <a class="btn btn-primary m-1" href="{% url 'autores_alta' %}">Creacion de un Autor</a>    
+        <a class="btn btn-primary m-1" href="{% url 'alta_libros' %}">Creacion de un libro</a>
+        <a class="btn btn-primary m-1" href="{% url 'alta_ejemplares' %}">Establecer ejemplares</a>
+        <a class="btn btn-primary m-1" href="{% url 'prestamos' %}">Registrar un prestamo</a>
+        <a class="btn btn-primary m-1" href="{% url 'devoluciones' %}">Registrar una devolucion</a>
+        <a class="btn btn-primary m-1" href="{% url 'reservas' %}">Registrar una reserva</a>  
+        <a class="btn btn-primary m-1 disabled" href="#">Consultar Catalogo o Buscar Libro</a>
+    </div>  
     
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message | upper}}
-                </div>
-            {% endfor %}
-        {% endif %}
-    
-    {% if form.errors %}
-        <p class="error">Por favor, corrige los errores.</p>
-    {% endif %}
 
-        <div class="card">
-            <div class="card-body">
-                <form action="{% url 'autores_alta' %}" method="post">
-                    <table>
-                        {% csrf_token %}
-                        {{ autores }} 
-                    </table>
-                    <input type="submit" class="btn btn-primary" value="Enviar">
-                </form>
-            </div>
-        </div>
-    </div>
 
 
 {% endblock cuerpo %}

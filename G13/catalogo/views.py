@@ -18,10 +18,10 @@ def alta_autores(request):
 
             messages.success(request, "Autor Registrado correctamente")
 
-            return redirect('alta_autores')
+            return render(request, "catalogo/alta_plantilla.html", {'formulario': autores_form, 'tipoalta': 'Autor'})
     else:
         autores_form = Autores_Form()
-    return render(request, "catalogo/autores_alta.html", {'autores': autores_form})
+    return render(request, "catalogo/alta_plantilla.html", {'formulario': autores_form, 'tipoalta': 'Autor'})
 
 
 def alta_usuarios(request):
@@ -33,7 +33,7 @@ def alta_usuarios(request):
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
             usuarios_form.save()
 
-            messages.success(request, "Autor Registrado correctamente")
+            messages.success(request, "Usuario Registrado correctamente")
 
             return render(request, "catalogo/alta_plantilla.html", {'formulario': usuarios_form, 'tipoalta': 'Usuario'})
     else:

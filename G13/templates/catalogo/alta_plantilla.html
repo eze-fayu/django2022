@@ -23,7 +23,7 @@
 
         <div class="card">
             <div class="card-body">
-                <form action="{% url 'autores_alta' %}" method="post">
+                <form action="{% url vinculo %}" method="post">
                     <table>
                         {% csrf_token %}
                         {{ formulario }} 

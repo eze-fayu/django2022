@@ -15,14 +15,12 @@ def alta_autores(request):
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
             autores_form.save()
-
             messages.success(request, "Autor Registrado correctamente")
-
-            return render(request, "catalogo/alta_plantilla.html", {'formulario': autores_form, 'tipoalta': 'Autor'})
+            # autores_form = Autores_Form()
+            return render(request, "catalogo/alta_plantilla.html", {'formulario': autores_form, 'tipoalta': 'Autor', 'vinculo': 'autores_alta'})
     else:
         autores_form = Autores_Form()
-    return render(request, "catalogo/alta_plantilla.html", {'formulario': autores_form, 'tipoalta': 'Autor'})
-
+        return render(request, "catalogo/alta_plantilla.html", {'formulario': autores_form, 'tipoalta': 'Autor', 'vinculo': 'autores_alta'})
 
 def alta_usuarios(request):
 
@@ -35,10 +33,10 @@ def alta_usuarios(request):
 
             messages.success(request, "Usuario Registrado correctamente")
 
-            return render(request, "catalogo/alta_plantilla.html", {'formulario': usuarios_form, 'tipoalta': 'Usuario'})
+            return render(request, "catalogo/alta_plantilla.html", {'formulario': usuarios_form, 'tipoalta': 'Usuario', 'vinculo': 'alta_usuario'})
     else:
         usuarios_form = Usuarios_Form()
-    return render(request, "catalogo/alta_plantilla.html", {'formulario': usuarios_form, 'tipoalta': 'Usuario'})
+        return render(request, "catalogo/alta_plantilla.html", {'formulario': usuarios_form, 'tipoalta': 'Usuario', 'vinculo': 'alta_usuario'})
 
 def alta_libros(request):
 
@@ -51,10 +49,10 @@ def alta_libros(request):
 
             messages.success(request, "Autor Registrado correctamente")
 
-            return render(request, "catalogo/alta_plantilla.html", {'formulario': libros_form, 'tipoalta': 'Libros'})
+            return render(request, "catalogo/alta_plantilla.html", {'formulario': libros_form, 'tipoalta': 'Libros', 'vinculo': 'alta_libros'})
     else:
         libros_form = Libros_Form()
-    return render(request, "catalogo/alta_plantilla.html", {'formulario': libros_form, 'tipoalta': 'Libros'})
+        return render(request, "catalogo/alta_plantilla.html", {'formulario': libros_form, 'tipoalta': 'Libros', 'vinculo': 'alta_libros'})
 
 def alta_ejemplares(request):
 
@@ -67,10 +65,10 @@ def alta_ejemplares(request):
 
             messages.success(request, "Autor Registrado correctamente")
 
-            return render(request, "catalogo/alta_plantilla.html", {'formulario': ejemplares_form, 'tipoalta': 'Ejemplares'})
+            return render(request, "catalogo/alta_plantilla.html", {'formulario': ejemplares_form, 'tipoalta': 'Ejemplares', 'vinculo': 'alta_ejemplares'})
     else:
-        ejemplares_form = Ejemplares_Form()
-    return render(request, "catalogo/alta_plantilla.html", {'formulario': ejemplares_form, 'tipoalta': 'Ejemplaress'})
+       ejemplares_form = Ejemplares_Form()
+       return render(request, "catalogo/alta_plantilla.html", {'formulario': ejemplares_form, 'tipoalta': 'Ejemplaress', 'vinculo': 'alta_ejemplares'})
 
 def prestamos(request):
 
@@ -83,10 +81,10 @@ def prestamos(request):
 
             messages.success(request, "Autor Registrado correctamente")
 
-            return render(request, "catalogo/alta_plantilla.html", {'formulario': prestamo_form, 'tipoalta': 'Prestamos'})
+            return render(request, "catalogo/alta_plantilla.html", {'formulario': prestamo_form, 'tipoalta': 'Prestamos', 'vinculo': 'prestamos'})
     else:
         prestamo_form = Prestamos_Form()
-    return render(request, "catalogo/alta_plantilla.html", {'formulario': prestamo_form, 'tipoalta': 'Prestamos'})
+        return render(request, "catalogo/alta_plantilla.html", {'formulario': prestamo_form, 'tipoalta': 'Prestamos', 'vinculo': 'prestamos'})
 
 def devoluciones(request):
 
@@ -99,10 +97,10 @@ def devoluciones(request):
 
             messages.success(request, "Autor Registrado correctamente")
 
-            return render(request, "catalogo/alta_plantilla.html", {'formulario': devoluciones_form, 'tipoalta': 'Devoluciones'})
+            return render(request, "catalogo/alta_plantilla.html", {'formulario': devoluciones_form, 'tipoalta': 'Devoluciones', 'vinculo': 'devoluciones'})
     else:
         devoluciones_form = Devoluciones_Form()
-    return render(request, "catalogo/alta_plantilla.html", {'formulario': devoluciones_form, 'tipoalta': 'Devoluciones'})
+        return render(request, "catalogo/alta_plantilla.html", {'formulario': devoluciones_form, 'tipoalta': 'Devoluciones', 'vinculo': 'devoluciones'})
 
 def reservas(request):
 
@@ -115,7 +113,7 @@ def reservas(request):
 
             messages.success(request, "Autor Registrado correctamente")
 
-            return render(request, "catalogo/alta_plantilla.html", {'formulario': reservas_form, 'tipoalta': 'Reservas'})
+            return render(request, "catalogo/alta_plantilla.html", {'formulario': reservas_form, 'tipoalta': 'Reservas', 'vinculo': 'reservas'})
     else:
         reservas_form = Reservas_Form()
-    return render(request, "catalogo/alta_plantilla.html", {'formulario': reservas_form, 'tipoalta': 'Reservas'})
+        return render(request, "catalogo/alta_plantilla.html", {'formulario': reservas_form, 'tipoalta': 'Reservas', 'vinculo': 'reservas'})

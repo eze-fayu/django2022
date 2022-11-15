@@ -30,7 +30,7 @@ def alta_usuarios(request):
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
             usuarios_form.save()
-
+            usuarios_form = Usuarios_Form()
             messages.success(request, "Usuario Registrado correctamente")
 
             return render(request, "catalogo/alta_plantilla.html", {'formulario': usuarios_form, 'tipoalta': 'Usuario', 'vinculo': 'alta_usuario'})
@@ -46,7 +46,7 @@ def alta_libros(request):
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
             libros_form.save()
-
+            libros_form = Libros_Form()
             messages.success(request, "Autor Registrado correctamente")
 
             return render(request, "catalogo/alta_plantilla.html", {'formulario': libros_form, 'tipoalta': 'Libros', 'vinculo': 'alta_libros'})
@@ -62,7 +62,7 @@ def alta_ejemplares(request):
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
             ejemplares_form.save()
-
+            ejemplares_form = Ejemplares_Form()
             messages.success(request, "Autor Registrado correctamente")
 
             return render(request, "catalogo/alta_plantilla.html", {'formulario': ejemplares_form, 'tipoalta': 'Ejemplares', 'vinculo': 'alta_ejemplares'})
@@ -78,7 +78,7 @@ def prestamos(request):
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
             prestamo_form.save()
-
+            prestamo_form = Prestamos_Form()
             messages.success(request, "Autor Registrado correctamente")
 
             return render(request, "catalogo/alta_plantilla.html", {'formulario': prestamo_form, 'tipoalta': 'Prestamos', 'vinculo': 'prestamos'})
@@ -94,7 +94,7 @@ def devoluciones(request):
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
             devoluciones_form.save()
-
+            devoluciones_form = Devoluciones_Form()
             messages.success(request, "Autor Registrado correctamente")
 
             return render(request, "catalogo/alta_plantilla.html", {'formulario': devoluciones_form, 'tipoalta': 'Devoluciones', 'vinculo': 'devoluciones'})
@@ -110,7 +110,7 @@ def reservas(request):
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
             reservas_form.save()
-
+            reservas_form = Reservas_Form()
             messages.success(request, "Autor Registrado correctamente")
 
             return render(request, "catalogo/alta_plantilla.html", {'formulario': reservas_form, 'tipoalta': 'Reservas', 'vinculo': 'reservas'})

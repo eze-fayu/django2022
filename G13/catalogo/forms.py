@@ -38,3 +38,4 @@ class Reservas_Form(forms.ModelForm):
         model = reservas
         fields = '__all__'
 
+# widget=forms.dateInput(attrs={'type': 'date'})

@@ -12,4 +12,5 @@ urlpatterns = [
     path('prestamos', views.prestamos, name="prestamos"),
     path('devoluciones', views.devoluciones, name="devoluciones"),
     path('reservas', views.reservas, name="reservas"),
+    path('consultas/<str:apellido>', views.consultas, name="consultas"),
 ]

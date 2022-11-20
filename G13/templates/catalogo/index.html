@@ -15,7 +15,15 @@
         <a class="btn btn-primary m-1 disabled" href="#">Consultar Catalogo o Buscar Libro</a>
     </div>  
     
-
-
+    {% if autores %}
+        {% for autor in autores %}
+        <ul class="list-group"></ul>    
+            <li class="list-group-item">{{autor.apellido}}, {{autor.nombre}}</li>
+        {% endfor %}
+    {% comment %}
+        {% else %}
+        <p>No hay autores Con Ese Apellido</p>
+        {% endcomment %}
+    {% endif %}
 
 {% endblock cuerpo %}

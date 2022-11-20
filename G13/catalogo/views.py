@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import Autores_Form, Usuarios_Form, Libros_Form, Ejemplares_Form, Prestamos_Form, Devoluciones_Form, Reservas_Form
-
+from .models import autores
 # Create your views here.
 
 def index_catalogo(request):
@@ -10,13 +10,16 @@ def index_catalogo(request):
 def alta_autores(request):
 
     if request.method == "POST":
-        autores_form = Autores_Form(request.POST)
+        autores_form = Autores_Form(request.POST, instance=autores)  # instance=autores es para usarlo como editor
         if autores_form.is_valid():
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
+            autores_form.nombre = autores_form.nombre.capitalize()
+            autores_form.apellido = autores_form.apellido.capitalize()
+            autores_form.nacionalidad = autores_form.nacionalidad.capitalize()
             autores_form.save()
             messages.success(request, "Autor Registrado correctamente")
-            # autores_form = Autores_Form()
+            autores_form = Autores_Form()
             return render(request, "catalogo/alta_plantilla.html", {'formulario': autores_form, 'tipoalta': 'Autor', 'vinculo': 'autores_alta'})
     else:
         autores_form = Autores_Form()
@@ -29,6 +32,8 @@ def alta_usuarios(request):
         if usuarios_form.is_valid():
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
+            usuarios_form.nombre = usuarios_form.nombre.capitalize()
+            usuarios_form.apellido = usuarios_form.apellido.capitalize()
             usuarios_form.save()
             usuarios_form = Usuarios_Form()
             messages.success(request, "Usuario Registrado correctamente")
@@ -117,3 +122,12 @@ def reservas(request):
     else:
         reservas_form = Reservas_Form()
         return render(request, "catalogo/alta_plantilla.html", {'formulario': reservas_form, 'tipoalta': 'Reservas', 'vinculo': 'reservas'})
+
+def consultas(request, apellido ):
+    apellido = apellido.capitalize()
+    autores_busqueda = autores.objects.filter(apellido=apellido)
+    print(autores_busqueda)
+    if autores_busqueda is not None:
+        return render(request, "catalogo/index.html", {'autores': autores_busqueda})
+    else:
+        return render(request, "catalogo/index.html")

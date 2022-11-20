@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import Autores_Form, Usuarios_Form, Libros_Form, Ejemplares_Form, Prestamos_Form, Devoluciones_Form, Reservas_Form
-from .models import autores
+from .models import autores, ejemplares
 # Create your views here.
 
 def index_catalogo(request):
@@ -94,7 +94,7 @@ def prestamos(request):
 def devoluciones(request):
 
     if request.method == "POST":
-        devoluciones_form = Devoluciones_Form(request.POST)
+        devoluciones_form = Devoluciones_Form(request.POST, instance=devoluciones)
         if devoluciones_form.is_valid():
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
@@ -129,5 +129,12 @@ def consultas(request, apellido ):
     print(autores_busqueda)
     if autores_busqueda is not None:
         return render(request, "catalogo/index.html", {'autores': autores_busqueda})
+    else:
+        return render(request, "catalogo/index.html")
+
+def catalogo(request ):
+    catalogo_gral = ejemplares.objects.all()
+    if catalogo_gral is not None:
+        return render(request, "catalogo/index.html", {'ejemplares': catalogo_gral})
     else:
         return render(request, "catalogo/index.html")

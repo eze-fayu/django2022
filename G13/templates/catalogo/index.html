@@ -12,7 +12,7 @@
         <a class="btn btn-primary m-1" href="{% url 'prestamos' %}">Registrar un prestamo</a>
         <a class="btn btn-primary m-1" href="{% url 'devoluciones' %}">Registrar una devolucion</a>
         <a class="btn btn-primary m-1" href="{% url 'reservas' %}">Registrar una reserva</a>  
-        <a class="btn btn-primary m-1 disabled" href="#">Consultar Catalogo o Buscar Libro</a>
+        <a class="btn btn-primary m-1 " href="{% url 'catalogo' %}">Ver Catalogo</a>
     </div>  
     
     {% if autores %}
@@ -25,5 +25,16 @@
         <p>No hay autores Con Ese Apellido</p>
         {% endcomment %}
     {% endif %}
+
+    {% if ejemplares %}
+        {% for libro in ejemplares %}
+        <ul class="list-group"></ul>    
+            <li class="list-group-item">{{libro.libro}} - {{libro.estado}}</li>
+        {% endfor %}
+    {% comment %}
+        {% else %}
+        <p>No hay Libros Cargados</p>
+        {% endcomment %}
+{% endif %}
 
 {% endblock cuerpo %}

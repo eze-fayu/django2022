@@ -13,4 +13,5 @@ urlpatterns = [
     path('devoluciones', views.devoluciones, name="devoluciones"),
     path('reservas', views.reservas, name="reservas"),
     path('consultas/<str:apellido>', views.consultas, name="consultas"),
+    path('catalogo', views.catalogo, name="catalogo"),
 ]

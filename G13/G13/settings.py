@@ -141,3 +141,5 @@ EMAIL_HOST_USER = 'xxxxxxxxx@gmail.com'  # correo desde donde se envia
 EMAIL_HOST_PASSWORD = 'xxxxxxxxxx'     # contraseña del correo
 
 EMAIL_USE_TLS = True
+
+LOGIN_REDIRECT_URL = 'catalogo'

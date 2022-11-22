@@ -2,39 +2,43 @@
 
 {% block cuerpo %}
 
-<h1 class="container text-center" style="margin-top:100px">Seleccione el tipo de acción que desea:</h1>
+{% if request.user.is_authenticated %}
+        <h1 class="container text-center" style="margin-top:100px">Seleccione el tipo de acción que desea:</h1>
 
-    <div class="btn-group" role="group">
-        <a class="btn btn-primary m-1" href="{% url 'alta_usuario' %}">Creacion de un usuario</a>
-        <a class="btn btn-primary m-1" href="{% url 'autores_alta' %}">Creacion de un Autor</a>    
-        <a class="btn btn-primary m-1" href="{% url 'alta_libros' %}">Creacion de un libro</a>
-        <a class="btn btn-primary m-1" href="{% url 'alta_ejemplares' %}">Establecer ejemplares</a>
-        <a class="btn btn-primary m-1" href="{% url 'prestamos' %}">Registrar un prestamo</a>
-        <a class="btn btn-primary m-1" href="{% url 'devoluciones' %}">Registrar una devolucion</a>
-        <a class="btn btn-primary m-1" href="{% url 'reservas' %}">Registrar una reserva</a>  
-        <a class="btn btn-primary m-1 " href="{% url 'catalogo' %}">Ver Catalogo</a>
-    </div>  
-    
-    {% if autores %}
-        {% for autor in autores %}
-        <ul class="list-group"></ul>    
-            <li class="list-group-item">{{autor.apellido}}, {{autor.nombre}}</li>
-        {% endfor %}
-    {% comment %}
-        {% else %}
-        <p>No hay autores Con Ese Apellido</p>
-        {% endcomment %}
-    {% endif %}
+            <div class="btn-group" role="group">
+                <a class="btn btn-primary m-1" href="{% url 'alta_usuario' %}">Creacion de un usuario</a>
+                <a class="btn btn-primary m-1" href="{% url 'autores_alta' %}">Creacion de un Autor</a>    
+                <a class="btn btn-primary m-1" href="{% url 'alta_libros' %}">Creacion de un libro</a>
+                <a class="btn btn-primary m-1" href="{% url 'alta_ejemplares' %}">Establecer ejemplares</a>
+                <a class="btn btn-primary m-1" href="{% url 'prestamos' %}">Registrar un prestamo</a>
+                <a class="btn btn-primary m-1" href="{% url 'devoluciones' %}">Registrar una devolucion</a>
+                <a class="btn btn-primary m-1" href="{% url 'reservas' %}">Registrar una reserva</a>  
+                <a class="btn btn-primary m-1 " href="{% url 'catalogo' %}">Ver Catalogo</a>
+            </div>  
+            
+            {% if autores %}
+                {% for autor in autores %}
+                <ul class="list-group"></ul>    
+                    <li class="list-group-item">{{autor.apellido}}, {{autor.nombre}}</li>
+                {% endfor %}
+            {% comment %}
+                {% else %}
+                <p>No hay autores Con Ese Apellido</p>
+                {% endcomment %}
+            {% endif %}
 
-    {% if ejemplares %}
-        {% for libro in ejemplares %}
-        <ul class="list-group"></ul>    
-            <li class="list-group-item">{{libro.libro}} - {{libro.estado}}</li>
-        {% endfor %}
-    {% comment %}
-        {% else %}
-        <p>No hay Libros Cargados</p>
-        {% endcomment %}
+            {% if ejemplares %}
+                {% for libro in ejemplares %}
+                <ul class="list-group"></ul>    
+                    <li class="list-group-item">{{libro.libro}} - {{libro.estado}}</li>
+                {% endfor %}
+            {% comment %}
+                {% else %}
+                <p>No hay Libros Cargados</p>
+                {% endcomment %}
+        {% endif %}
+{% else %}
+            <h3 class="container text-center" style="margin-top:100px">Debes estas logeado para acceder a este contenido</h3>
 {% endif %}
 
 {% endblock cuerpo %}

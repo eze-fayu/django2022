@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3 mt-5 mb-5">
+
+        <h1 class="text-center" style="margin-top:50px">Registro</h1>
+        <hr>
+    
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message | upper}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    
+    {% if form.errors %}
+        <p class="error">Por favor, corrige los errores.</p>
+    {% endif %}
+
+        <div class="card">
+            <div class="card-body">
+              <h1>Te has Desconectado</h1>
+            </div>
+        </div>
+    </div>
+        
+</div>
+{% endblock cuerpo %}

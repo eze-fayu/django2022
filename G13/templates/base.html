@@ -25,6 +25,15 @@
         <li class="nav-item">
           <a class="nav-link text-dark mr-3" href="/contacto">Contacto</a>
         </li>
+        {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link text-dark mr-3" href="/logout">Logout</a>
+          </li>        
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-dark mr-3" href="/login">Login</a>
+          </li>
+        {% endif %}
       </ul>
       </nav>
       {% block cabecera %}

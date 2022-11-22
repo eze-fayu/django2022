@@ -4,6 +4,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.contrib import messages
 from django.conf import settings
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -46,3 +47,15 @@ def contacto(request):
         contacto_form = ContactoForm()
     return render(request, "main/contacto.html", {'contacto_form': contacto_form})
 
+def registro(request):
+    if request.method == 'POST':
+        register_form = UserCreationForm(request.POST)
+        if register_form.is_valid():
+            register_form.save()
+            username = register_form.cleaned_data['username']
+            messages.success(request, f'Usuario {username} creado correctamente')
+            # register_form = UserCreationForm()
+            return redirect('catalogo')
+    else:
+        register_form = UserCreationForm()
+    return render(request, "register.html", {'register_form': register_form})

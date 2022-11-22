@@ -2,11 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import Autores_Form, Usuarios_Form, Libros_Form, Ejemplares_Form, Prestamos_Form, Devoluciones_Form, Reservas_Form
 from .models import autores, ejemplares
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required
 def index_catalogo(request):
     return render(request, "catalogo/index.html")
-    
+
+@login_required    
 def alta_autores(request):
 
     if request.method == "POST":
@@ -25,6 +28,7 @@ def alta_autores(request):
         autores_form = Autores_Form()
         return render(request, "catalogo/alta_plantilla.html", {'formulario': autores_form, 'tipoalta': 'Autor', 'vinculo': 'autores_alta'})
 
+@login_required
 def alta_usuarios(request):
 
     if request.method == "POST":
@@ -43,6 +47,7 @@ def alta_usuarios(request):
         usuarios_form = Usuarios_Form()
         return render(request, "catalogo/alta_plantilla.html", {'formulario': usuarios_form, 'tipoalta': 'Usuario', 'vinculo': 'alta_usuario'})
 
+@login_required
 def alta_libros(request):
 
     if request.method == "POST":
@@ -59,6 +64,7 @@ def alta_libros(request):
         libros_form = Libros_Form()
         return render(request, "catalogo/alta_plantilla.html", {'formulario': libros_form, 'tipoalta': 'Libros', 'vinculo': 'alta_libros'})
 
+@login_required
 def alta_ejemplares(request):
 
     if request.method == "POST":
@@ -75,6 +81,7 @@ def alta_ejemplares(request):
        ejemplares_form = Ejemplares_Form()
        return render(request, "catalogo/alta_plantilla.html", {'formulario': ejemplares_form, 'tipoalta': 'Ejemplaress', 'vinculo': 'alta_ejemplares'})
 
+@login_required
 def prestamos(request):
 
     if request.method == "POST":
@@ -91,6 +98,7 @@ def prestamos(request):
         prestamo_form = Prestamos_Form()
         return render(request, "catalogo/alta_plantilla.html", {'formulario': prestamo_form, 'tipoalta': 'Prestamos', 'vinculo': 'prestamos'})
 
+@login_required
 def devoluciones(request):
 
     if request.method == "POST":
@@ -107,6 +115,7 @@ def devoluciones(request):
         devoluciones_form = Devoluciones_Form()
         return render(request, "catalogo/alta_plantilla.html", {'formulario': devoluciones_form, 'tipoalta': 'Devoluciones', 'vinculo': 'devoluciones'})
 
+@login_required
 def reservas(request):
 
     if request.method == "POST":
@@ -123,6 +132,7 @@ def reservas(request):
         reservas_form = Reservas_Form()
         return render(request, "catalogo/alta_plantilla.html", {'formulario': reservas_form, 'tipoalta': 'Reservas', 'vinculo': 'reservas'})
 
+@login_required
 def consultas(request, apellido ):
     apellido = apellido.capitalize()
     autores_busqueda = autores.objects.filter(apellido=apellido)
@@ -132,6 +142,7 @@ def consultas(request, apellido ):
     else:
         return render(request, "catalogo/index.html")
 
+@login_required
 def catalogo(request ):
     catalogo_gral = ejemplares.objects.all()
     if catalogo_gral is not None:

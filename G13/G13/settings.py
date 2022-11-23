@@ -157,4 +157,4 @@ EMAIL_HOST_PASSWORD = 'xxxxxxxxxx'     # contraseña del correo
 
 EMAIL_USE_TLS = True
 
-LOGIN_REDIRECT_URL = 'catalogo'
+LOGIN_REDIRECT_URL = 'catalogo'   # donde te redirige despues del login

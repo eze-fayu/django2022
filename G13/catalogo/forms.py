@@ -36,7 +36,7 @@ class Devoluciones_Form(forms.ModelForm):
         model = devoluciones
         fields = '__all__'
         widgets = {
-                    'fecha_devolucion': forms.DateInput(attrs={'type': 'date'}),
+                    'fecha_devolucion_prestamo': forms.DateInput(attrs={'type': 'date'}),
                     }
 
 class Reservas_Form(forms.ModelForm):

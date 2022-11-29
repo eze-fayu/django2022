@@ -20,7 +20,7 @@ class ejemplares(models.Model):
     libro = models.ForeignKey(libros, on_delete=models.CASCADE)
     estado = models.CharField(max_length=50, verbose_name="Estado")
     def __str__(self):
-        return self.estado
+        return self.libro.titulo + " - " + self.libro.autor.nombre + " - " + self.libro.autor.apellido + " - " + self.libro.editorial + " - " + self.estado
 
 class usuarios(models.Model):
     nombre = models.CharField(max_length=50, verbose_name="Nombre")
@@ -37,13 +37,13 @@ class prestamos(models.Model):
     fecha_prestamo = models.DateField()
     fecha_devolucion = models.DateField()
     def __str__(self):
-        return self.fecha_prestamo
+        return str(self.fecha_prestamo) +  " - " + self.usuario.nombre + " " + self.usuario.apellido + " - " + self.ejemplar.libro.titulo
 
 class devoluciones(models.Model):
     prestamo = models.ForeignKey(prestamos, on_delete=models.CASCADE)
-    fecha_devolucion = models.DateField()
+    fecha_devolucion_prestamo = models.DateField()
     def __str__(self):
-        return self.fecha_devolucion
+        return self.fecha_devolucion_prestamo
 
 class reservas(models.Model):
     usuario = models.ForeignKey(usuarios, on_delete=models.CASCADE)

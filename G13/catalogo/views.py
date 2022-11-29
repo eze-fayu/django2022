@@ -13,13 +13,13 @@ def index_catalogo(request):
 def alta_autores(request):
 
     if request.method == "POST":
-        autores_form = Autores_Form(request.POST, instance=autores)  # instance=autores es para usarlo como editor
+        autores_form = Autores_Form(request.POST)  # instance=autores es para usarlo como editor
         if autores_form.is_valid():
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
-            autores_form.nombre = autores_form.nombre.capitalize()
-            autores_form.apellido = autores_form.apellido.capitalize()
-            autores_form.nacionalidad = autores_form.nacionalidad.capitalize()
+            autores_form.nombre = autores_form.cleaned_data['nombre'].capitalize()
+            autores_form.apellido = autores_form.cleaned_data['apellido'].capitalize()
+            autores_form.nacionalidad = autores_form.cleaned_data['nacionalidad'].capitalize()
             autores_form.save()
             messages.success(request, "Autor Registrado correctamente")
             autores_form = Autores_Form()
@@ -36,8 +36,8 @@ def alta_usuarios(request):
         if usuarios_form.is_valid():
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>
-            usuarios_form.nombre = usuarios_form.nombre.capitalize()
-            usuarios_form.apellido = usuarios_form.apellido.capitalize()
+            usuarios_form.nombre = usuarios_form.cleaned_data['nombre'].capitalize()
+            usuarios_form.apellido = usuarios_form.cleaned_data['apellido'].capitalize()
             usuarios_form.save()
             usuarios_form = Usuarios_Form()
             messages.success(request, "Usuario Registrado correctamente")
@@ -102,7 +102,7 @@ def prestamos(request):
 def devoluciones(request):
 
     if request.method == "POST":
-        devoluciones_form = Devoluciones_Form(request.POST, instance=devoluciones)
+        devoluciones_form = Devoluciones_Form(request.POST)
         if devoluciones_form.is_valid():
             # request.post es un diccionario que tiene :
             # <QueryDict: {'csrfmiddlewaretoken': ['8359bj78AaLzCqUP7Ubk541YhDteAlIG87S6WnamkkzbJA9PK39gVid3sl8pxPSX'], 'nombre': ['casillacon'], 'apellido': ['casilape'], 'email': ['main@mail.com'], 'mensaje': ['mensaje_enviado']}>

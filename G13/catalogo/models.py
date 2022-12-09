@@ -18,7 +18,7 @@ class libros(models.Model):
 
 class ejemplares(models.Model):
     libro = models.ForeignKey(libros, on_delete=models.CASCADE)
-    estado = models.CharField(max_length=50, verbose_name="Estado")
+    estado = models.CharField(max_length=50, verbose_name="Edición")
     def __str__(self):
         return self.libro.titulo + " - " + self.libro.autor.nombre + " - " + self.libro.autor.apellido + " - " + self.libro.editorial + " - " + self.estado
 

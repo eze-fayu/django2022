@@ -77,25 +77,25 @@ WSGI_APPLICATION = 'G13.wsgi.application'
 
 
 # sqlite3
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 # 
 
 #  postgress
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'myproject',
-#         'USER': 'myprojectuser',
-#         'PASSWORD': 'password',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ezefaiella$biblioteca',
+        'USER': 'ezefaiella',
+        'PASSWORD': 'fayu4519',
+        'HOST': 'ezefaiella.mysql.pythonanywhere-services.com',
+        'PORT': '',
+    }
+}
 
 
 # Password validation
